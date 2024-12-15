@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function displayCard(card) {
         if (!card || !card.imageUrlTemplate || !card.code) {
             console.error("Card data is missing required fields");
-            cardContainer.innerHTML = "<p>Error loading card details.</p>";
+            cardContainer.innerHTML = `
+                <p>Error loading card details.</p>
+                <p>Card data: ${JSON.stringify(card)}</p>
+            `;
             return;
         }
 
@@ -53,4 +56,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-});
+})
