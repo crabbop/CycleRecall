@@ -1,6 +1,5 @@
-/* style.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Lato', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
@@ -9,11 +8,12 @@ body {
 
 h1 {
     color: #333;
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 #card-container {
     margin-top: 20px;
-    max-width: 1000px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
@@ -21,11 +21,23 @@ h1 {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 img {
     border: 1px solid #ccc;
     border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+p {
+    word-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.5;
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 .card-content {
@@ -33,7 +45,7 @@ img {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .card-image {
