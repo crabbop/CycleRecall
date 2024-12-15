@@ -37,10 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const imageUrl = imageUrlTemplate.replace("{code}", card.code);
         console.log("Image URL:", imageUrl); // Debugging log
 
-        cardContainer.innerHTML = `
-            <img src="${imageUrl}" alt="${card.title}" style="max-width: 100%; height: auto;">
+cardContainer.innerHTML = `
+    <div class="card-content">
+        <img src="${imageUrl}" alt="${card.title}" class="card-image">
+        <div class="card-details">
             <h2>${card.title}</h2>
-        `;
+            ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong> ${field.value}</p>` : '').join('')}
+        </div>
+    </div>`;
 
         const fields = [
             { label: "Type", value: card.type_code },
