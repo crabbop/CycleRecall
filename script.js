@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
     const cardContainer = document.getElementById("card-container");
 
@@ -22,11 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Display the card on the page
     function displayCard(card) {
+        const imageUrl = card.image_url || "https://via.placeholder.com/300?text=Image+Not+Available"; // Fallback image
         cardContainer.innerHTML = `
-            <img src="${card.image_url}" alt="${card.title}" style="max-width: 100%; height: auto;">
+            <img src="${imageUrl}" alt="${card.title}" style="max-width: 100%; height: auto;">
             <h2>${card.title}</h2>
             <p><strong>Type:</strong> ${card.type_code}</p>
-            <p><strong>Text:</strong> ${card.text}</p>
+            <p><strong>Description:</strong> ${card.text || "No description available."}</p>
         `;
     }
 });
