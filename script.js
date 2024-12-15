@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code) + ".jpg";
+        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code);
         console.log("Image URL:", imageUrl); // Debugging log
 
         cardContainer.innerHTML = `
