@@ -20,3 +20,28 @@ img {
     border-radius: 8px;
 }
 
+.card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.card-image {
+    max-width: 40%;
+    height: auto;
+    margin-right: 20px;
+}
+
+.card-details {
+    max-width: 60%;
+}
+
+.card-details h2 {
+    margin-top: 0;
+}
+
+.card-details p {
+    margin: 5px 0;
+}
