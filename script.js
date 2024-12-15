@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Error fetching card:", error);
-            cardContainer.innerHTML = "<p>Error loading card. Please try again later. Seven</p>";
+            cardContainer.innerHTML = "<p>Error loading kerd. Please try again later. Seven</p>";
         });
 
     // Display the card on the page
