@@ -51,6 +51,22 @@
     <div id="card-container">
         <p>Loading card...</p>
     </div>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cardContainer = document.getElementById("card-container");
+
+            // Hardcoded card ID for Muse
+            const cardId = "34091";
+            const imageUrl = `https://netrunnerdb.com/en/card/${cardId}`;
+
+            // Display the card details
+            cardContainer.innerHTML = `
+                <img src="${imageUrl}" alt="Muse" style="max-width: 100%; height: auto;">
+                <h2>Muse</h2>
+                <p><strong>Type:</strong> Asset</p>
+                <p><strong>Description:</strong> This is a placeholder description for the card Muse.</p>
+            `;
+        });
+    </script>
 </body>
 </html>
