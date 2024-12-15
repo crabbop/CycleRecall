@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("API Response:", JSON.stringify(data, null, 2)); // Log the entire API response in a readable format
             const card = data.data[0]; // Get the card data
             console.log("Card data:", card); // Debugging log
+            console.log("Image URL Template:", card.imageUrlTemplate); // Log the image URL template
             displayCard(card);
         })
         .catch(error => {
