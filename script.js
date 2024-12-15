@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Error fetching card:", error);
-            cardContainer.innerHTML = "<p>Error loading kerd. Please try again later. Seven</p>";
+            cardContainer.innerHTML = "<p>Error loading card. Please try again later.</p>";
         });
 
     // Display the card on the page
     function displayCard(card) {
-        if (!card.imageUrlTemplate || !card.code) {
-            console.error("Image URL template or card code is missing");
-            cardContainer.innerHTML = "<p>Error loading image.</p>";
+        if (!card || !card.imageUrlTemplate || !card.code) {
+            console.error("Card data is missing required fields");
+            cardContainer.innerHTML = "<p>Error loading card details.</p>";
             return;
         }
 
