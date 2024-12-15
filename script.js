@@ -26,6 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <img src="${imageUrl}" alt="${card.title}" style="max-width: 100%; height: auto;">
             <h2>${card.title}</h2>
             <p><strong>Type:</strong> ${card.type_code}</p>
+            <p><strong>Faction:</strong> ${card.faction_code}</p>
+            <p><strong>Cost:</strong> ${card.cost || "N/A"}</p>
+            <p><strong>Strength:</strong> ${card.strength || "N/A"}</p>
+            <p><strong>Memory Units:</strong> ${card.memory_units || "N/A"}</p>
+            <p><strong>Agenda Points:</strong> ${card.agenda_points || "N/A"}</p>
+            <p><strong>Influence Cost:</strong> ${card.faction_cost || "N/A"}</p>
+            <p><strong>Console Power:</strong> ${card.console_power || "N/A"}</p>
             <p><strong>Description:</strong> ${card.text || "No description available."}</p>
         `;
     }
