@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
-            console.log("API Response:", data); // Log the entire API response
+            console.log("API Response:", JSON.stringify(data, null, 2)); // Log the entire API response in a readable format
             const card = data.data[0]; // Get the card data
             console.log("Card data:", card); // Debugging log
             displayCard(card);
