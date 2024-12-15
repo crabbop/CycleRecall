@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             console.log("API Response:", JSON.stringify(data, null, 2)); // Log the entire API response in a readable format
             const card = data.data[0]; // Get the card data
+            const imageUrlTemplate = data.imageUrlTemplate; // Get the image URL template
             console.log("Card data:", card); // Debugging log
-            console.log("Image URL Template:", card.imageUrlTemplate); // Log the image URL template
-            displayCard(card);
+            console.log("Image URL Template:", imageUrlTemplate); // Log the image URL template
+            displayCard(card, imageUrlTemplate);
         })
         .catch(error => {
             console.error("Error fetching card:", error);
@@ -22,17 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     // Display the card on the page
-    function displayCard(card) {
-        if (!card || !card.imageUrlTemplate || !card.code) {
+    function displayCard(card, imageUrlTemplate) {
+        if (!card || !imageUrlTemplate || !card.code) {
             console.error("Card data is missing required fields");
             cardContainer.innerHTML = `
                 <p>Error loading card details.</p>
                 <p>Card data: ${JSON.stringify(card)}</p>
+                <p>Image URL Template: ${imageUrlTemplate}</p>
             `;
             return;
         }
 
-        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code) + ".jpg";
+        const imageUrl = imageUrlTemplate.replace("{code}", card.code) + ".jpg";
         console.log("Image URL:", imageUrl); // Debugging log
 
         cardContainer.innerHTML = `
@@ -56,4 +58,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-})
+});
