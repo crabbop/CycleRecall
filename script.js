@@ -20,7 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Display the card on the page
     function displayCard(card) {
-        const imageUrl = card.image_url || "https://via.placeholder.com/300?text=Image+Not+Available"; // Fallback image
+        // Fallback image in case the card image isn't available
+        const imageUrl = card.image_url || "https://via.placeholder.com/300x400?text=No+Image";
+
+        // Display card details
         cardContainer.innerHTML = `
             <img src="${imageUrl}" alt="${card.title}" style="max-width: 100%; height: auto;">
             <h2>${card.title}</h2>
