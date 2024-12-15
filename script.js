@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
         fields.forEach(field => {
-            if (field.value && field.value !== "N/A") {
+            if (field.value !== null && field.value !== false) {
                 cardContainer.innerHTML += `<p><strong>${field.label}:</strong> ${field.value}</p>`;
             }
         });
