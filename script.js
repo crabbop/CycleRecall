@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Display the card on the page
     function displayCard(card) {
-        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code) + ".jpg";
+        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code);
         cardContainer.innerHTML = `
             <img src="${imageUrl}" alt="${card.title}" style="max-width: 100%; height: auto;">
             <h2>${card.title}</h2>
