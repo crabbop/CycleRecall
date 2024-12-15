@@ -37,15 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const imageUrl = imageUrlTemplate.replace("{code}", card.code);
         console.log("Image URL:", imageUrl); // Debugging log
 
-cardContainer.innerHTML = `
-    <div class="card-content">
-        <img src="${imageUrl}" alt="${card.title}" class="card-image">
-        <div class="card-details">
-            <h2>${card.title}</h2>
-            ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong> ${field.value}</p>` : '').join('')}
-        </div>
-    </div>`;
-
         const fields = [
             { label: "Type", value: card.type_code },
             { label: "Keywords", value: card.keywords },
@@ -56,10 +47,13 @@ cardContainer.innerHTML = `
             { label: "Description", value: card.text || "No description available." }
         ];
 
-        fields.forEach(field => {
-            if (field.value !== null && field.value !== false) {
-                cardContainer.innerHTML += `<p><strong>${field.label}:</strong> ${field.value}</p>`;
-            }
-        });
+        cardContainer.innerHTML = `
+            <div class="card-content">
+                <img src="${imageUrl}" alt="${card.title}" class="card-image">
+                <div class="card-details">
+                    <h2>${card.title}</h2>
+                    ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong> ${field.value}</p>` : '').join('')}
+                </div>
+            </div>`;
     }
 });
