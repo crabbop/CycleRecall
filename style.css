@@ -1,1 +1,22 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    color: #333;
+}
+
+#card-container {
+    margin-top: 20px;
+}
+
+img {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
 
