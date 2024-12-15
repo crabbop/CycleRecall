@@ -28,13 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const fields = [
             { label: "Type", value: card.type_code },
+            { label: "Subtype", value: card.display_subtypes },
             { label: "Faction", value: card.faction_code },
             { label: "Cost", value: card.cost },
-            { label: "Strength", value: card.strength },
-            { label: "Memory Units", value: card.memory_units },
-            { label: "Agenda Points", value: card.agenda_points },
+            { label: "Memory Cost", value: card.memory_cost },
             { label: "Influence Cost", value: card.faction_cost },
-            { label: "Console Power", value: card.console_power },
             { label: "Description", value: card.text || "No description available." }
         ];
 
