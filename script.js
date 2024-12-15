@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
             const card = data.data[0]; // Get the card data
+            console.log("Card data:", card); // Debugging log
             displayCard(card);
         })
         .catch(error => {
@@ -20,7 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Display the card on the page
     function displayCard(card) {
-        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code);
+        if (!card.imageUrlTemplate || !card.code) {
+            console.error("Image URL template or card code is missing");
+            cardContainer.innerHTML = "<p>Error loading image.</p>";
+            return;
+        }
+
+        const imageUrl = card.imageUrlTemplate.replace("{code}", card.code) + ".jpg";
+        console.log("Image URL:", imageUrl); // Debugging log
+
         cardContainer.innerHTML = `
             <img src="${imageUrl}" alt="${card.title}" style="max-width: 100%; height: auto;">
             <h2>${card.title}</h2>
