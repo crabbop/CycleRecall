@@ -46,42 +46,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display the card on the page
-    function displayCard(card) {
-        if (!card) {
-            console.error("Card data is missing");
-            cardContainer.innerHTML = "<p>Error loading card details.</p>";
-            return;
-        }
-
-        const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
-
-        const fields = getFields(card).map(field => {
-            let value = card[field];
-            if (field === "faction_code") {
-                value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
-            } else {
-                value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
-            }
-            return { label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()), value };
-        });
-
-        const img = new Image();
-        img.src = imageUrl;
-        img.alt = "Card Image";
-        img.className = "card-image";
-
-        img.onerror = (event) => {
-            console.error(`Error loading card image: ${event.message}`);
-            img.src = "default-image.png"; // Fallback image
-        };
-
-        cardContainer.innerHTML = `
-            <div class="card-content">
-                <div class="card-image-container"></div>
-                <div class="card-details">
-                    ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong> ${field.value}</p>` : '').join('')}
-                </div>
-            </div>`;
-        cardContainer.querySelector(".card-image-container").appendChild(img);
+function displayCard(card) {
+    if (!card) {
+        console.error("Card data is missing");
+        cardContainer.innerHTML = "<p>Error loading card details.</p>";
+        return;
     }
+
+    const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
+
+    const fields = getFields(card).map(field => {
+        let value = card[field];
+        if (field === "faction_code") {
+            value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
+        } else {
+            value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+        }
+        return { label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()), value };
+    });
+
+    const img = new Image();
+    img.src = imageUrl;
+    img.alt = "Card Image";
+    img.className = "card-image";
+
+    img.onerror = (event) => {
+        console.error(`Error loading card image: ${event.message}`);
+        img.src = "default-image.png"; // Fallback image
+    };
+
+    cardContainer.innerHTML = `
+        <div class="card-content">
+            <div class="card-image-container"></div>
+            <div class="card-details">
+                ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong><br>${field.value}</p>` : '').join('')}
+            </div>
+        </div>`;
+    cardContainer.querySelector(".card-image-container").appendChild(img);
+}
 });
