@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
             const cards = data.data; // Get the list of cards
-            const startupCards = cards.filter(card => card.format === 'startup'); // Filter cards for the startup format
+            const startupPackCodes = ['rwr', 'tai', 'su21', 'sg']; // Startup format pack codes
+            const startupCards = cards.filter(card => startupPackCodes.includes(card.pack_code)); // Filter cards for the startup format
             const randomCard = getRandomCard(startupCards); // Get a random card
             displayCard(randomCard);
         })
