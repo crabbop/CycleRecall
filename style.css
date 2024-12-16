@@ -76,7 +76,7 @@ p {
 
 .card-content {
     display: flex;
-    align-items: flex-end; /* Align items to the bottom */
+    align-items: stretch; /* Align items to the bottom */
     justify-content: center;
     margin: 0 auto;
     max-width: 80%;
