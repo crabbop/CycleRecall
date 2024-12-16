@@ -77,6 +77,7 @@ p {
 /* Optional: Define specific sizes for individual SVGs if needed */
 .icon-credit {
     width: 2%; /* Example size for credit icon */
+    vertical-align: bottom; 
 }
 
 .icon-trash {
@@ -87,10 +88,11 @@ p {
 }
 
 .icon-click {
-    width: 5%; /* Example size for trash icon */
+    width: 3%; /* Example size for trash icon */
 }
 .icon-subroutine {
-    width: 2%; /* Example size for credit icon */
+    width: 4%; /* Example size for credit icon */
+    vertical-align: bottom; 
 }
 
 .icon-recurring-credit {
