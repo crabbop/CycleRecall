@@ -27,6 +27,24 @@ document.addEventListener("DOMContentLoaded", () => {
         return cards[randomIndex];
     }
 
+    // Function to get fields based on type_code
+    function getFields(card) {
+        const fieldSets = {
+            "agenda": ["title", "type_code", "keywords", "faction_code", "advancement_cost", "cost", "text"],
+            "asset": ["title", "type_code", "keywords", "faction_code", "cost", "text", "trash_cost"],
+            "operation": ["title", "type_code", "keywords", "faction_code", "cost", "trash_cost", "text"],
+            "upgrade": ["title", "type_code", "keywords", "faction_code", "cost", "trash_cost", "text"],
+            "ice": ["title", "type_code", "keywords", "faction_code", "cost", "strength", "text"],
+            "identity": ["title", "type_code", "keywords", "faction_code", "minimum_deck_size", "influence_limit", "text"],
+            "event": ["title", "type_code", "faction_code", "cost", "text"],
+            "program": ["title", "type_code", "keywords", "faction_code", "cost", "memory_cost", "text"],
+            "hardware": ["title", "type_code", "keywords", "faction_code", "cost", "text"],
+            "resource": ["title", "type_code", "keywords", "faction_code", "cost", "text"]
+        };
+
+        return fieldSets[card.type_code] || [];
+    }
+
     // Display the card on the page
     function displayCard(card) {
         if (!card) {
@@ -37,15 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const imageUrl = `https://netrunnerdb.com/card_image/${card.code}.png`;
 
-        const fields = [
-            { label: "Type", value: card.type_code },
-            { label: "Keywords", value: card.keywords },
-            { label: "Faction", value: card.faction_code },
-            { label: "Cost", value: card.cost },
-            { label: "Memory Cost", value: card.memory_cost },
-            { label: "Influence Cost", value: card.faction_cost },
-            { label: "Description", value: card.text || "No description available." }
-        ];
+        const fields = getFields(card).map(field => ({ label: field.replace(/_/g, ' '), value: card[field] }));
 
         cardContainer.innerHTML = `
             <div class="card-content">
