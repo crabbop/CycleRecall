@@ -58,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const fields = getFields(card).map(field => {
             let value = card[field];
             if (field === "faction_code") {
-                value = value ? value.toUpperCase() : value;
+                value = value ? value.toString().toUpperCase() : value;
             } else {
-                value = value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+                value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
             }
             return { label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()), value };
         });
