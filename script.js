@@ -55,7 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const imageUrl = `https://netrunnerdb.com/card_image/${card.code}.png`;
 
-        const fields = getFields(card).map(field => ({ label: field.replace(/_/g, ' '), value: card[field] }));
+        const fields = getFields(card).map(field => ({
+            label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()),
+            value: card[field]
+        }));
 
         cardContainer.innerHTML = `
             <div class="card-content">
