@@ -62,6 +62,11 @@ function displayCard(card) {
         } else {
             value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
         }
+
+        if (field === 'text') {
+            value = formatCardText(value);
+        }
+
         let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
         if (field === 'text') {
             fieldHtml += `<br>${value}</p>`;
@@ -89,5 +94,26 @@ function displayCard(card) {
             </div>
         </div>`;
     cardContainer.querySelector(".card-image-container").appendChild(img);
+}
+
+// Function to format card text
+function formatCardText(text) {
+    const replacements = {
+        '\\[trash\\]': 'trash.svg',
+        '\\[mu\\]': 'mu.svg',
+        '\\[click\\]': 'click.svg',
+        '\\[credit\\]': 'credit.svg',
+        '\\[subroutine\\]': 'subroutine.svg',
+        '\\[recurring-credit\\]': 'recurring-credit.svg'
+    };
+    
+    for (const [key, value] of Object.entries(replacements)) {
+        const regex = new RegExp(key, 'g');
+        text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon">`);
+    }
+
+    text = text.replace(/\\n/g, '<br>'); // Handle line breaks
+
+    return text;
 }
 });
