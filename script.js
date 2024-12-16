@@ -106,13 +106,13 @@ function formatCardText(text) {
         '\\[subroutine\\]': 'Subroutine.svg',
         '\\[recurring-credit\\]': 'recurring-credit.svg'
     };
-    
+
     for (const [key, value] of Object.entries(replacements)) {
         const regex = new RegExp(key, 'g');
         text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon">`);
     }
 
-    text = text.replace(/\\n/g, '<br>'); // Handle line breaks
+    text = text.replace(/\\n/g, '<br> '); // Handle line breaks and ensure space after
 
     return text;
 }
