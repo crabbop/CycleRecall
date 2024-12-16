@@ -55,10 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const imageUrl = `https://netrunnerdb.com/card_image/${card.code}.png`;
 
-        const fields = getFields(card).map(field => ({
-            label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()),
-            value: card[field]
-        }));
+        const fields = getFields(card).map(field => {
+            let value = card[field];
+            if (field === "faction_code") {
+                value = value ? value.toUpperCase() : value;
+            } else {
+                value = value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+            }
+            return { label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()), value };
+        });
 
         cardContainer.innerHTML = `
             <div class="card-content">
