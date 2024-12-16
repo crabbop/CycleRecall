@@ -27,7 +27,7 @@ h1 {
 img {
     border: 1px solid #ccc;
     border-radius: 8px;
-    max-width: 100%;
+    max-width: 200%;
     height: auto;
     display: block;
     margin-bottom: 10px;
