@@ -69,8 +69,8 @@ p {
 .icon {
     width: 5%; /* Standardize to 5% */
     height: auto;
-    display: inline;
-    vertical-align: bottom; /* Align to the bottom */
+    display: inline-block;
+    vertical-align: text-bottom; /* Align to the text bottom */
     border: none;
 }
 
