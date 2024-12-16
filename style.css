@@ -13,7 +13,7 @@ h1 {
 
 #card-container {
     margin-top: 20px;
-    max-width: 900px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
@@ -55,7 +55,7 @@ p {
 }
 
 .card-details {
-    max-width: 120%;
+    max-width: 60%;
 }
 
 .card-details h2 {
