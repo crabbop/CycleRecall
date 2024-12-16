@@ -70,12 +70,12 @@ p {
     width: 5%; /* Standardize to 5% */
     height: auto;
     display: inline;
-    vertical-align: baseline; /* Align to the bottom */
+    vertical-align: bottom; /* Align to the bottom */
     border: none;
 }
 
 /* Optional: Define specific sizes for individual SVGs if needed */
-.icon-credit { width: 5%; vertical-align: baseline; }
+.icon-credit { width: 5%; vertical-align: bottom; }
 .icon-trash { width: 5%; }
 .icon-mu { width: 5%; }
 .icon-click { width: 5%; }
