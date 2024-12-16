@@ -25,7 +25,7 @@ h1 {
 }
 
 img {
-    border: 1px solid #ccc;
+    border: none; /* Remove the border */
     border-radius: 8px;
     max-width: 100%;
     height: auto;
@@ -67,8 +67,9 @@ p {
 }
 
 .icon {
-    width: 5%; /* Make the image smaller by 50% */
+    width: 5%; /* Adjust the size to 5% */
     height: auto;
     display: inline; /* Ensure the image appears inline with the text */
     vertical-align: middle; /* Align the image vertically in the middle */
+    border: none; /* Ensure no border is applied */
 }
