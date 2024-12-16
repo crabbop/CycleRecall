@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fields = getFields(card).map(field => {
             let value = card[field];
             if (field === "faction_code") {
-                value = value ? value.toString().toUpperCase() : value;
+                value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
             } else {
                 value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
             }
