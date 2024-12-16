@@ -65,12 +65,22 @@ document.addEventListener("DOMContentLoaded", () => {
             return { label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()), value };
         });
 
+        const img = new Image();
+        img.src = imageUrl;
+        img.alt = "Card Image";
+        img.className = "card-image";
+        img.onerror = () => {
+            console.error("Error loading card image");
+            img.src = "default-image.png"; // Fallback image
+        };
+
         cardContainer.innerHTML = `
             <div class="card-content">
-                <img src="${imageUrl}" alt="Card Image" class="card-image">
+                <div class="card-image-container"></div>
                 <div class="card-details">
                     ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong> ${field.value}</p>` : '').join('')}
                 </div>
             </div>`;
+        cardContainer.querySelector(".card-image-container").appendChild(img);
     }
 });
