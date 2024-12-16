@@ -66,19 +66,18 @@ p {
     margin: 5px 0;
 }
 
-.icon {
-    width: 5%; /* Standardize to 5% */
-    height: auto;
-    display: inline-block;
-    vertical-align: text-bottom; /* Align to the text bottom */
-    border: none;
+.svg-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Align items horizontally */
+    height: 100%; /* Adjust based on your layout */
 }
 
-.card-content {
-    display: flex;
-    align-items: end; /* Align items to the bottom */
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 80%;
+.icon {
+    width: 5%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle; /* Align to the middle */
+    border: none;
 }
 
