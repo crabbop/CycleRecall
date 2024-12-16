@@ -74,11 +74,11 @@ p {
     border: none;
 }
 
-/* Optional: Define specific sizes for individual SVGs if needed */
-.icon-credit { width: 3%; }
-.icon-trash { width: 5%; }
-.icon-mu { width: 5%; }
-.icon-click { width: 5%; }
-.icon-subroutine { width: 5%; }
-.icon-recurring-credit { width: 5%; }
+.card-content {
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom */
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 80%;
+}
 
