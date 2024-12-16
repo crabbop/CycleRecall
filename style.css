@@ -70,7 +70,7 @@ p {
     width: 5%; /* Standardize to 5% */
     height: auto;
     display: inline;
-    vertical-align: text-bottom; /* Align to the bottom */
+    vertical-align: baseline; /* Align to the bottom */
     border: none;
 }
 
