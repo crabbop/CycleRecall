@@ -99,11 +99,11 @@ function displayCard(card) {
 // Function to format card text
 function formatCardText(text) {
     const replacements = {
-        '\\[trash\\]': 'Trash.svg',
-        '\\[mu\\]': 'MU.svg',
-        '\\[click\\]': 'Click.svg',
-        '\\[credit\\]': 'Credit.svg',
-        '\\[subroutine\\]': 'Subroutine.svg',
+        '\\[trash\\]': 'trash.svg',
+        '\\[mu\\]': 'mu.svg',
+        '\\[click\\]': 'click.svg',
+        '\\[credit\\]': 'credit.svg',
+        '\\[subroutine\\]': 'subroutine.svg',
         '\\[recurring-credit\\]': 'recurring-credit.svg'
     };
     
