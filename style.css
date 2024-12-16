@@ -67,35 +67,18 @@ p {
 }
 
 .icon {
-    width: 5%; /* Adjust the size to 5% */
+    width: 5%; /* Standardize to 5% */
     height: auto;
-    display: inline; /* Ensure the image appears inline with the text */
-    vertical-align: bottom; /* Align the image vertically in the middle */
-    border: none; /* Ensure no border is applied */
+    display: inline;
+    vertical-align: text-bottom; /* Align to the bottom */
+    border: none;
 }
 
 /* Optional: Define specific sizes for individual SVGs if needed */
-.icon-credit {
-    width: 2%; /* Example size for credit icon */
-    vertical-align: bottom; 
-}
-
-.icon-trash {
-    width: 4%; /* Example size for trash icon */
-}
-.icon-mu {
-    width: 5%; /* Example size for credit icon */
-}
-
-.icon-click {
-    width: 3%; /* Example size for trash icon */
-}
-.icon-subroutine {
-    width: 4%; /* Example size for credit icon */
-    vertical-align: bottom; 
-}
-
-.icon-recurring-credit {
-    width: 5%; /* Example size for trash icon */
-}
+.icon-credit { width: 5%; }
+.icon-trash { width: 5%; }
+.icon-mu { width: 5%; }
+.icon-click { width: 5%; }
+.icon-subroutine { width: 5%; }
+.icon-recurring-credit { width: 5%; }
 
