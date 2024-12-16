@@ -67,7 +67,7 @@ p {
 }
 
 .icon {
-    width: 5%; /* Adjust the size to 5% */
+    width: 3%; /* Adjust the size to 5% */
     height: auto;
     display: inline; /* Ensure the image appears inline with the text */
     vertical-align: middle; /* Align the image vertically in the middle */
