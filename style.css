@@ -65,3 +65,10 @@ p {
 .card-details p {
     margin: 5px 0;
 }
+
+.icon {
+    width: 50%; /* Make the image smaller by 50% */
+    height: auto;
+    display: inline; /* Ensure the image appears inline with the text */
+    vertical-align: middle; /* Align the image vertically in the middle */
+}
