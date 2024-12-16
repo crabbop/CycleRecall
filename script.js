@@ -113,7 +113,7 @@ function formatCardText(text) {
     }
 
     // Handle line breaks
-    text = text.replace(/\\n/g, '<br>'); 
+    text = text.replace(/\n/g, '<br>'); 
 
     return text;
 }
