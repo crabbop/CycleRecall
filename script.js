@@ -69,8 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = imageUrl;
         img.alt = "Card Image";
         img.className = "card-image";
-        img.onerror = () => {
-            console.error("Error loading card image");
+
+        img.onerror = (event) => {
+            console.error(`Error loading card image: ${event.message}`);
             img.src = "default-image.png"; // Fallback image
         };
 
