@@ -46,76 +46,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display the card on the page
-function displayCard(card) {
-    if (!card) {
-        console.error("Card data is missing");
-        cardContainer.innerHTML = "<p>Error loading card details.</p>";
-        return;
+    function displayCard(card) {
+        if (!card) {
+            console.error("Card data is missing");
+            cardContainer.innerHTML = "<p>Error loading card details.</p>";
+            return;
+        }
+
+        const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
+
+        const fields = getFields(card).map(field => {
+            let value = card[field];
+            if (field === "faction_code") {
+                value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
+            } else {
+                value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+            }
+
+            if (field === 'text') {
+                value = formatCardText(value);
+            }
+
+            let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
+            if (field === 'text') {
+                fieldHtml += `<br>${value}</p>`;
+            } else {
+                fieldHtml += ` ${value}</p>`;
+            }
+            return fieldHtml;
+        }).join('');
+
+        const img = new Image();
+        img.src = imageUrl;
+        img.alt = "Card Image";
+        img.className = "card-image";
+
+        img.onerror = (event) => {
+            console.error(`Error loading card image: ${event.message}`);
+            img.src = "default-image.png"; // Fallback image
+        };
+
+        cardContainer.innerHTML = `
+            <div class="card-content">
+                <div class="card-image-container"></div>
+                <div class="card-details">
+                    ${fields}
+                </div>
+            </div>`;
+        cardContainer.querySelector(".card-image-container").appendChild(img);
     }
 
-    const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
+    // Function to format card text
+    function formatCardText(text) {
+        const replacements = {
+            '\\[trash\\]': 'trash.svg',
+            '\\[mu\\]': 'mu.svg',
+            '\\[click\\]': 'click.svg',
+            '\\[credit\\]': 'credit.svg',
+            '\\[subroutine\\]': 'subroutine.svg',
+            '\\[recurring-credit\\]': 'recurring-credit.svg'
+        };
 
-    const fields = getFields(card).map(field => {
-        let value = card[field];
-        if (field === "faction_code") {
-            value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
-        } else {
-            value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+        for (const [key, value] of Object.entries(replacements)) {
+            const iconClass = `icon-${key.slice(2, -2)}`;
+            const regex = new RegExp(key, 'g');
+            text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon ${iconClass}">`);
         }
 
-        if (field === 'text') {
-            value = formatCardText(value);
-        }
+        // Handle line breaks
+        text = text.replace(/\n/g, '<br>');
 
-        let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
-        if (field === 'text') {
-            fieldHtml += `<br>${value}</p>`;
-        } else {
-            fieldHtml += ` ${value}</p>`;
-        }
-        return fieldHtml;
-    }).join('');
-
-    const img = new Image();
-    img.src = imageUrl;
-    img.alt = "Card Image";
-    img.className = "card-image";
-
-    img.onerror = (event) => {
-        console.error(`Error loading card image: ${event.message}`);
-        img.src = "default-image.png"; // Fallback image
-    };
-
-    cardContainer.innerHTML = `
-        <div class="card-content">
-            <div class="card-image-container"></div>
-            <div class="card-details">
-                ${fields}
-            </div>
-        </div>`;
-    cardContainer.querySelector(".card-image-container").appendChild(img);
-}
-
-// Function to format card text
-function formatCardText(text) {
-    const replacements = {
-        '\\[trash\\]': 'trash.svg',
-        '\\[mu\\]': 'mu.svg',
-        '\\[click\\]': 'click.svg',
-        '\\[credit\\]': 'credit.svg',
-        '\\[subroutine\\]': 'subroutine.svg',
-        '\\[recurring-credit\\]': 'recurring-credit.svg'
-    };
-
-    for (const [key, value] of Object.entries(replacements)) {
-        const iconClass = `icon-${key.slice(2, -2)}`;
-        const regex = new RegExp(key, 'g');
-        text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon ${iconClass}">`);
+        return text;
     }
-
-    // Handle line breaks
-    text = text.replace(/\n/g, '<br>');
-
-    return text;
-}
 });
