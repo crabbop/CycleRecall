@@ -99,11 +99,11 @@ function displayCard(card) {
 // Function to format card text
 function formatCardText(text) {
     const replacements = {
-        '\\[trash\\]': 'Trash.svg',
-        '\\[mu\\]': 'MU.svg',
-        '\\[click\\]': 'Click.svg',
-        '\\[credit\\]': 'Credit.svg',
-        '\\[subroutine\\]': 'Subroutine.svg',
+        '\\[trash\\]': 'trash.svg',
+        '\\[mu\\]': 'mu.svg',
+        '\\[click\\]': 'click.svg',
+        '\\[credit\\]': 'credit.svg',
+        '\\[subroutine\\]': 'subroutine.svg',
         '\\[recurring-credit\\]': 'recurring-credit.svg'
     };
 
@@ -112,7 +112,8 @@ function formatCardText(text) {
         text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon">`);
     }
 
-    text = text.replace(/\\n/g, '<br>'); // Handle line breaks
+    // Handle line breaks
+    text = text.replace(/\\n/g, '<br>'); 
 
     return text;
 }
