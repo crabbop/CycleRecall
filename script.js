@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return fieldHtml;
         }).join('');
 
-        const img = new Image();
-        img.src = imageUrl;
-        img.alt = "Card Image";
-        img.className = "card-image";
+        const svgContainer = document.createElement('div');
+        svgContainer.className = 'svg-container';
 
-        img.onerror = (event) => {
-            console.error(`Error loading card image: ${event.message}`);
-            img.src = "default-image.png"; // Fallback image
-        };
+        const img = document.createElement('img');
+        img.src = 'svg/mu.svg'; // Example SVG file
+        img.alt = 'mu';
+        img.className = 'icon';
+
+        svgContainer.appendChild(img);
 
         cardContainer.innerHTML = `
             <div class="card-content">
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${fields}
                 </div>
             </div>`;
-        cardContainer.querySelector(".card-image-container").appendChild(img);
+        cardContainer.querySelector(".card-image-container").appendChild(svgContainer);
     }
 
     // Function to format card text
