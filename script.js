@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const imageUrl = `https://netrunnerdb.com/card_image/${card.code}.png`;
+        const imageUrl = `https://netrunnerdb.com/card_image/${card.code}.png?${new Date().getTime()}`;
 
         const fields = getFields(card).map(field => {
             let value = card[field];
