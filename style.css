@@ -77,21 +77,21 @@ p {
 /* Optional: Define specific sizes for individual SVGs if needed */
 .icon-credit {
     width: 2%; /* Example size for credit icon */
-    vertical-align: bottom; 
+    vertical-align: text-bottom; 
 }
 
 .icon-trash {
-    width: 5%; /* Example size for trash icon */
+    width: 4%; /* Example size for trash icon */
 }
 .icon-mu {
     width: 5%; /* Example size for credit icon */
 }
 
 .icon-click {
-    width: 3%; /* Example size for trash icon */
+    width: 4%; /* Example size for trash icon */
 }
 .icon-subroutine {
-    width: 4%; /* Example size for credit icon */
+    width: 8%; /* Example size for credit icon */
     vertical-align: bottom; 
 }
 
