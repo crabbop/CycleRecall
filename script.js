@@ -112,7 +112,7 @@ function formatCardText(text) {
         text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon">`);
     }
 
-    text = text.replace(/\\n/g, '<br> '); // Handle line breaks and ensure space after
+    text = text.replace(/\\n/g, '<br>'); // Handle line breaks
 
     return text;
 }
