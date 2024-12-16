@@ -108,12 +108,13 @@ function formatCardText(text) {
     };
 
     for (const [key, value] of Object.entries(replacements)) {
+        const iconClass = `icon-${key.slice(2, -2)}`;
         const regex = new RegExp(key, 'g');
-        text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon">`);
+        text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon ${iconClass}">`);
     }
 
     // Handle line breaks
-    text = text.replace(/\n/g, '<br>'); 
+    text = text.replace(/\n/g, '<br>');
 
     return text;
 }
