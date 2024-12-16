@@ -67,9 +67,33 @@ p {
 }
 
 .icon {
-    width: 3%; /* Adjust the size to 5% */
+    width: 5%; /* Adjust the size to 5% */
     height: auto;
     display: inline; /* Ensure the image appears inline with the text */
     vertical-align: middle; /* Align the image vertically in the middle */
     border: none; /* Ensure no border is applied */
 }
+
+/* Optional: Define specific sizes for individual SVGs if needed */
+.icon-credit {
+    width: 2%; /* Example size for credit icon */
+}
+
+.icon-trash {
+    width: 5%; /* Example size for trash icon */
+}
+.icon-mu {
+    width: 5%; /* Example size for credit icon */
+}
+
+.icon-click {
+    width: 5%; /* Example size for trash icon */
+}
+.icon-subroutine {
+    width: 2%; /* Example size for credit icon */
+}
+
+.icon-recurring-credit {
+    width: 5%; /* Example size for trash icon */
+}
+
