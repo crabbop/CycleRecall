@@ -62,8 +62,14 @@ function displayCard(card) {
         } else {
             value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
         }
-        return { label: field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()), value };
-    });
+        let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
+        if (field === 'text') {
+            fieldHtml += `<br>${value}</p>`;
+        } else {
+            fieldHtml += ` ${value}</p>`;
+        }
+        return fieldHtml;
+    }).join('');
 
     const img = new Image();
     img.src = imageUrl;
@@ -79,7 +85,7 @@ function displayCard(card) {
         <div class="card-content">
             <div class="card-image-container"></div>
             <div class="card-details">
-                ${fields.map(field => field.value !== null && field.value !== false ? `<p><strong>${field.label}:</strong><br>${field.value}</p>` : '').join('')}
+                ${fields}
             </div>
         </div>`;
     cardContainer.querySelector(".card-image-container").appendChild(img);
