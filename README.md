@@ -13,4 +13,3 @@ Long term, open to standard format also.
 ?Make public if looks/ works nicely.
 Utilise memorisation principles on how often a card is presented to you before and after you start to guess it correctly. 
 Select a grouping of cards you would like to learn, eg NBN ICE or Ararch programs. 
-Probably stop using the API and host card data locally. 
