@@ -42,25 +42,30 @@ p {
 
 .card-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 80%;
+    flex-direction: row;
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Add space between the card image and details */
 }
 
 .card-image-container {
+    width: 300px; /* Set the width of the image container */
+    height: 450px; /* Set the height of the image container */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
+    overflow: hidden; /* Hide any overflow content */
 }
 
 .card-image {
     max-width: 100%;
-    height: auto;
-    display: block;
-    margin-right: 20px;
+    max-height: 100%;
+    object-fit: contain; /* Scale the image to fit the container */
+}
+
+.card-details {
+    width: 300px; /* Set the width of the card details */
+    height: 450px; /* Set the height of the card details */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
 }
 
 .svg-container {
