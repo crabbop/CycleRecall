@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Lato', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
@@ -8,15 +8,36 @@ body {
 
 h1 {
     color: #333;
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+#card-container {
+    margin-top: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 img {
-    border: 1px solid #ccc;
+    border: none; /* Remove the border */
     border-radius: 8px;
     max-width: 100%;
     height: auto;
     display: block;
     margin-bottom: 10px;
+}
+
+p {
+    word-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.5;
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 .card-content {
@@ -47,8 +68,18 @@ img {
     overflow-y: auto; /* Add vertical scroll if content overflows */
 }
 
-p {
-    word-wrap: break-word;
-    max-width: 100%;
-    line-height: 1.5;
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.icon {
+    width: 5%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle; /* Align to the middle */
+    border: none;
 }
