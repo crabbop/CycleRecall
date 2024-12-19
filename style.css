@@ -78,7 +78,7 @@ p {
 }
 
 .icon {
-    width: 5%;
+    width: auto;
     height: auto;
     display: inline-block;
     vertical-align: middle; /* Align to the middle */
