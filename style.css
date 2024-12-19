@@ -98,10 +98,7 @@ p {
     overflow-y: auto; /* Add vertical scroll if content overflows */
 }
 
-.question-card {
-    width: 300px; /* Set the width of each question card */
-    height: 450px; /* Set the height of each question card */
-    border: 1px solid #ccc; /* Add a border for visibility */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* Hide any overflow content */
+#question-container p {
+    font-size: 1.2em;
+    color: #333;
 }
