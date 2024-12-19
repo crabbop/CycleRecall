@@ -42,7 +42,7 @@ img {
 }
 
 .card-details {
-    width: 300px; /* Set the width of the card details */
+    width: 450px; /* Set the width of the card details */
     height: 450px; /* Set the height of the card details */
     overflow-y: auto; /* Add vertical scroll if content overflows */
 }
