@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display the card on the page
-function displayCard(card) {
+function displayCard(card, container) {
     if (!card) {
         console.error("Card data is missing");
-        cardContainer.innerHTML = "<p>Error loading card details.</p>";
+        container.innerHTML = "<p>Error loading card details.</p>";
         return;
     }
 
@@ -81,15 +81,54 @@ function displayCard(card) {
     cardImage.alt = "Card Image";
     cardImage.className = "card-image";
 
-    cardContainer.innerHTML = `
+    container.innerHTML = `
         <div class="card-content">
             <div class="card-image-container"></div>
             <div class="card-details">
                 ${fields}
             </div>
         </div>`;
-    cardContainer.querySelector(".card-image-container").appendChild(cardImage);
+    container.querySelector(".card-image-container").appendChild(cardImage);
 }
+
+// Function to get 3 random cards with the same ctype_code
+function getRandomCardsWithSameType(cards, ctype_code, excludeCode) {
+    const filteredCards = cards.filter(card => card.ctype_code === ctype_code && card.code !== excludeCode);
+    const shuffledCards = filteredCards.sort(() => 0.5 - Math.random());
+    return shuffledCards.slice(0, 3);
+}
+
+// Main function to select a random card and 3 additional cards
+function displayRandomCardWithQuestions(cards) {
+    if (cards.length === 0) {
+        console.error("No cards available");
+        return;
+    }
+
+    // Select a random card
+    const randomCard = cards[Math.floor(Math.random() * cards.length)];
+
+    // Display the random card in the main card container
+    displayCard(randomCard, document.getElementById('card-container'));
+
+    // Get 3 random cards with the same ctype_code
+    const questionCards = getRandomCardsWithSameType(cards, randomCard.ctype_code, randomCard.code);
+
+    // Display the chosen card and the 3 additional cards in the question container
+    const questionContainer = document.getElementById('question-container');
+    questionContainer.innerHTML = ''; // Clear previous content
+
+    questionCards.forEach(card => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'question-card';
+        displayCard(card, cardElement);
+        questionContainer.appendChild(cardElement);
+    });
+}
+
+// Assume `cards` is an array of card objects available in your script
+// Call the function to display a random card and 3 additional cards
+displayRandomCardWithQuestions(cards);
 
     // Function to format card text
 function formatCardText(text) {
