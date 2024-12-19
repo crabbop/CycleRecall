@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Print the titles of the 3 random cards into the question-container
         if (questionContainer) {
-            questionContainer.innerHTML = randomCards.map(card => `<p>${card.title}</p>`).join('');
+            questionContainer.innerHTML = `<p>${display_card.title}</p>` + randomCards.map(card => `<p>${card.title}</p>`).join('');
         } else {
             console.error("question-container element not found");
         }
