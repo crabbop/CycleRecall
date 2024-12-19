@@ -137,6 +137,21 @@ document.addEventListener("DOMContentLoaded", () => {
         // Print the titles of the 3 random cards into the question-container
         if (questionContainer) {
             questionContainer.innerHTML = `<p>${display_card.title}</p>` + randomCards.map(card => `<p>${card.title}</p>`).join('');
+
+            // Add buttons to the question-container
+            const buttonContainer = document.createElement("div");
+            buttonContainer.className = "button-container";
+
+            randomCards.forEach((card, index) => {
+                const button = document.createElement("button");
+                button.innerText = `Card ${index + 1}`;
+                button.addEventListener("click", () => {
+                    alert(`You clicked: ${card.title}`);
+                });
+                buttonContainer.appendChild(button);
+            });
+
+            questionContainer.appendChild(buttonContainer);
         } else {
             console.error("question-container element not found");
         }
