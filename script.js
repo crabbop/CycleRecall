@@ -76,17 +76,6 @@ function displayCard(card) {
         return fieldHtml;
     }).join('');
 
-    const svgContainer = document.createElement('div');
-    svgContainer.className = 'svg-container';
-
-    // Create and add the SVG image element to the container only if needed
-    const img = document.createElement('img');
-    img.src = 'svg/click.svg'; // Example SVG file
-    img.alt = 'click';
-    img.className = 'icon';
-
-    svgContainer.appendChild(img);
-
     const cardImage = new Image();
     cardImage.src = imageUrl;
     cardImage.alt = "Card Image";
@@ -100,29 +89,28 @@ function displayCard(card) {
             </div>
         </div>`;
     cardContainer.querySelector(".card-image-container").appendChild(cardImage);
-    // cardContainer.querySelector(".card-image-container").appendChild(svgContainer);
 }
 
     // Function to format card text
-    function formatCardText(text) {
-        const replacements = {
-            '\\[trash\\]': 'trash.svg',
-            '\\[mu\\]': 'mu.svg',
-            '\\[click\\]': 'click.svg',
-            '\\[credit\\]': 'credit.svg',
-            '\\[subroutine\\]': 'subroutine.svg',
-            '\\[recurring-credit\\]': 'recurring-credit.svg'
-        };
+function formatCardText(text) {
+    const replacements = {
+        '\\[trash\\]': { file: 'trash.svg', width: '20px', height: '20px' },
+        '\\[mu\\]': { file: 'mu.svg', width: '20px', height: '20px' },
+        '\\[click\\]': { file: 'click.svg', width: '20px', height: '20px' },
+        '\\[credit\\]': { file: 'credit.svg', width: '20px', height: '20px' },
+        '\\[subroutine\\]': { file: 'subroutine.svg', width: '20px', height: '20px' },
+        '\\[recurring-credit\\]': { file: 'recurring-credit.svg', width: '20px', height: '20px' }
+    };
 
-        for (const [key, value] of Object.entries(replacements)) {
-            const iconClass = `icon-${key.slice(2, -2)}`;
-            const regex = new RegExp(key, 'g');
-            text = text.replace(regex, `<img src="svg/${value}" alt="${key.slice(2, -2)}" class="icon ${iconClass}">`);
-        }
-
-        // Handle line breaks
-        text = text.replace(/\n/g, '<br>');
-
-        return text;
+    for (const [key, value] of Object.entries(replacements)) {
+        const iconClass = `icon-${key.slice(2, -2)}`;
+        const regex = new RegExp(key, 'g');
+        text = text.replace(regex, `<img src="svg/${value.file}" alt="${key.slice(2, -2)}" class="icon ${iconClass}" style="width: ${value.width}; height: ${value.height};">`);
     }
+
+    // Handle line breaks
+    text = text.replace(/\n/g, '<br>');
+
+    return text;
+}
 });
