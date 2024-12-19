@@ -48,29 +48,27 @@ p {
     max-width: 80%;
 }
 
+.card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
 .card-image {
     max-width: 100%;
     height: auto;
+    display: block;
     margin-right: 20px;
-}
-
-.card-details {
-    max-width: 60%;
-}
-
-.card-details h2 {
-    margin-top: 0;
-}
-
-.card-details p {
-    margin: 5px 0;
 }
 
 .svg-container {
     display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: center; /* Align items horizontally */
-    height: 100%; /* Adjust based on your layout */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
 }
 
 .icon {
