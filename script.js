@@ -114,15 +114,14 @@ function displayRandomCardWithQuestions(cards) {
     // Get 3 random cards with the same type_code
     const questionCards = getRandomCardsWithSameType(cards, randomCard.type_code, randomCard.code);
 
-    // Display the chosen card and the 3 additional cards in the question container
+    // Display the titles of the 3 additional cards in the question container
     const questionContainer = document.getElementById('question-container');
     questionContainer.innerHTML = ''; // Clear previous content
 
     questionCards.forEach(card => {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'question-card';
-        displayCard(card, cardElement);
-        questionContainer.appendChild(cardElement);
+        const cardTitleElement = document.createElement('p');
+        cardTitleElement.textContent = card.title;
+        questionContainer.appendChild(cardTitleElement);
     });
 }
 
