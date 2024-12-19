@@ -81,8 +81,8 @@ function displayCard(card) {
 
     // Create and add the SVG image element to the container only if needed
     const img = document.createElement('img');
-    img.src = 'svg/mu.svg'; // Example SVG file
-    img.alt = 'mu';
+    img.src = 'svg/click.svg'; // Example SVG file
+    img.alt = 'click';
     img.className = 'icon';
 
     svgContainer.appendChild(img);
