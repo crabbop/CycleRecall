@@ -88,16 +88,16 @@ p {
 }
 
 #question-container {
-    width: 100%; /* Full width */
-    height: 600px; /* Set a height to make it visible */
-    border: 2px dashed #ccc; /* Add a dashed border for visibility */
-    margin-top: 20px; /* Space above the container */
-    display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap */
-    justify-content: center; /* Center the cards horizontally */
-    align-items: flex-start; /* Align items to the top */
-    gap: 20px; /* Space between cards */
-    overflow-y: auto; /* Add vertical scroll if content overflows */
+    margin-top: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 #question-container p {
