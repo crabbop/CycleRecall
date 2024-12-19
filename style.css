@@ -36,7 +36,7 @@ img {
 p {
     word-wrap: break-word;
     max-width: 100%;
-    line-height: 1;
+    line-height: 1.5;
     font-family: 'Lato', Arial, sans-serif;
 }
 
@@ -66,7 +66,7 @@ p {
     width: 500px; /* Set the width of the card details */
     height: 450px; /* Set the height of the card details */
     overflow-y: auto; /* Add vertical scroll if content overflows */
-    line-height: 1
+    line-height: 1.5
 }
 
 .svg-container {
