@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return fieldSets[card.type_code] || [];
     }
 
-    // Display the card on the page
+// Display the card on the page
 function displayCard(card, container) {
     if (!card) {
         console.error("Card data is missing");
@@ -129,7 +129,13 @@ function displayRandomCardWithQuestions(cards) {
 // Call the function to display a random card and 3 additional cards
 displayRandomCardWithQuestions(cards);
 
-    // Function to format card text
+// Function to format card text (if needed)
+function formatCardText(text) {
+    // Placeholder function if you need to format text
+    return text;
+}
+
+// Function to format card text
 function formatCardText(text) {
     const replacements = {
         '\\[trash\\]': { file: 'trash.svg', width: '20px', height: '20px' },
