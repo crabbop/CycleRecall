@@ -46,55 +46,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display the card on the page
-    function displayCard(card) {
-        if (!card) {
-            console.error("Card data is missing");
-            cardContainer.innerHTML = "<p>Error loading card details.</p>";
-            return;
+function displayCard(card) {
+    if (!card) {
+        console.error("Card data is missing");
+        cardContainer.innerHTML = "<p>Error loading card details.</p>";
+        return;
+    }
+
+    const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
+
+    const fields = getFields(card).map(field => {
+        let value = card[field];
+        if (field === "faction_code") {
+            value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
+        } else {
+            value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
         }
 
-        const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
+        if (field === 'text') {
+            value = formatCardText(value);
+        }
 
-        const fields = getFields(card).map(field => {
-            let value = card[field];
-            if (field === "faction_code") {
-                value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
-            } else {
-                value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
-            }
+        let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
+        if (field === 'text') {
+            fieldHtml += `<br>${value}</p>`;
+        } else {
+            fieldHtml += ` ${value}</p>`;
+        }
+        return fieldHtml;
+    }).join('');
 
-            if (field === 'text') {
-                value = formatCardText(value);
-            }
+    const svgContainer = document.createElement('div');
+    svgContainer.className = 'svg-container';
 
-            let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
-            if (field === 'text') {
-                fieldHtml += `<br>${value}</p>`;
-            } else {
-                fieldHtml += ` ${value}</p>`;
-            }
-            return fieldHtml;
-        }).join('');
+    const img = document.createElement('img');
+    img.src = 'svg/mu.svg'; // Example SVG file
+    img.alt = 'mu';
+    img.className = 'icon';
 
-        const svgContainer = document.createElement('div');
-        svgContainer.className = 'svg-container';
+    svgContainer.appendChild(img);
 
-        const img = document.createElement('img');
-        img.src = 'svg/mu.svg'; // Example SVG file
-        img.alt = 'mu';
-        img.className = 'icon';
+    const cardImage = new Image();
+    cardImage.src = imageUrl;
+    cardImage.alt = "Card Image";
+    cardImage.className = "card-image";
 
-        svgContainer.appendChild(img);
-
-        cardContainer.innerHTML = `
-            <div class="card-content">
-                <div class="card-image-container"></div>
-                <div class="card-details">
-                    ${fields}
-                </div>
-            </div>`;
-        cardContainer.querySelector(".card-image-container").appendChild(svgContainer);
-    }
+    cardContainer.innerHTML = `
+        <div class="card-content">
+            <div class="card-image-container"></div>
+            <div class="card-details">
+                ${fields}
+            </div>
+        </div>`;
+    cardContainer.querySelector(".card-image-container").appendChild(cardImage);
+    cardContainer.querySelector(".card-image-container").appendChild(svgContainer);
+}
 
     // Function to format card text
     function formatCardText(text) {
