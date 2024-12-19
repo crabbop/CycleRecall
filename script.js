@@ -79,10 +79,11 @@ function displayCard(card) {
     const svgContainer = document.createElement('div');
     svgContainer.className = 'svg-container';
 
-    // const img = document.createElement('img');
-    // img.src = 'svg/mu.svg'; // Example SVG file
-    // img.alt = 'mu';
-    // img.className = 'icon';
+    // Create and add the SVG image element to the container only if needed
+    const img = document.createElement('img');
+    img.src = 'svg/mu.svg'; // Example SVG file
+    img.alt = 'mu';
+    img.className = 'icon';
 
     svgContainer.appendChild(img);
 
