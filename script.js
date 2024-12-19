@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 // Display the card on the page
+// Function to format card text (if needed)
+function formatCardText(text) {
+    // Placeholder function if you need to format text
+    return text;
+}
+
+// Function to display a single card
 function displayCard(card, container) {
     if (!card) {
         console.error("Card data is missing");
@@ -109,7 +116,8 @@ function displayRandomCardWithQuestions(cards) {
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
     // Display the random card in the main card container
-    displayCard(randomCard, document.getElementById('card-container'));
+    const cardContainer = document.getElementById('card-container');
+    displayCard(randomCard, cardContainer);
 
     // Get 3 random cards with the same type_code
     const questionCards = getRandomCardsWithSameType(cards, randomCard.type_code, randomCard.code);
@@ -128,12 +136,6 @@ function displayRandomCardWithQuestions(cards) {
 // Assume `cards` is an array of card objects available in your script
 // Call the function to display a random card and 3 additional cards
 displayRandomCardWithQuestions(cards);
-
-// Function to format card text (if needed)
-function formatCardText(text) {
-    // Placeholder function if you need to format text
-    return text;
-}
 
 // Function to format card text
 function formatCardText(text) {
