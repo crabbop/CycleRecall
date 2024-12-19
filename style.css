@@ -67,7 +67,6 @@ p {
     height: 450px; /* Set the height of the card details */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     line-height: 1.5
-    margin: 5px
 }
 
 .svg-container {
