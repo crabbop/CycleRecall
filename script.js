@@ -100,7 +100,7 @@ function displayCard(card) {
             </div>
         </div>`;
     cardContainer.querySelector(".card-image-container").appendChild(cardImage);
-    cardContainer.querySelector(".card-image-container").appendChild(svgContainer);
+    // cardContainer.querySelector(".card-image-container").appendChild(svgContainer);
 }
 
     // Function to format card text
