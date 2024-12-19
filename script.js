@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const cards = data.data; // Get the list of cards
             const startupPackCodes = ['rwr', 'tai', 'su21', 'sg']; // Startup format pack codes
             const startupCards = cards.filter(card => startupPackCodes.includes(card.pack_code)); // Filter cards for the startup format
-            const randomCard = getRandomCard(startupCards); // Get a random card
-            displayCard(randomCard);
+            const display_card = getRandomCard(startupCards); // Get a random card and store it as display_card
+            displayCard(display_card);
         })
         .catch(error => {
             console.error("Error fetching cards:", error);
@@ -46,71 +46,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display the card on the page
-function displayCard(card) {
-    if (!card) {
-        console.error("Card data is missing");
-        cardContainer.innerHTML = "<p>Error loading card details.</p>";
-        return;
+    function displayCard(display_card) {
+        if (!display_card) {
+            console.error("Card data is missing");
+            cardContainer.innerHTML = "<p>Error loading card details.</p>";
+            return;
+        }
+
+        const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${display_card.code}.jpg`;
+
+        const fields = getFields(display_card).map(field => {
+            let value = display_card[field];
+            if (field === "faction_code") {
+                value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
+            } else {
+                value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+            }
+
+            if (field === 'text') {
+                value = formatCardText(value);
+            }
+
+            let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
+            if (field === 'text') {
+                fieldHtml += `<br>${value}</p>`;
+            } else {
+                fieldHtml += ` ${value}</p>`;
+            }
+            return fieldHtml;
+        }).join('');
+
+        const cardImage = new Image();
+        cardImage.src = imageUrl;
+        cardImage.alt = "Card Image";
+        cardImage.className = "card-image";
+
+        cardContainer.innerHTML = `
+            <div class="card-content">
+                <div class="card-image-container"></div>
+                <div class="card-details">
+                    ${fields}
+                </div>
+            </div>`;
+        cardContainer.querySelector(".card-image-container").appendChild(cardImage);
     }
-
-    const imageUrl = `https://card-images.netrunnerdb.com/v2/large/${card.code}.jpg`;
-
-    const fields = getFields(card).map(field => {
-        let value = card[field];
-        if (field === "faction_code") {
-            value = value && value.toLowerCase() === 'nbn' ? value.toUpperCase() : value.charAt(0).toUpperCase() + value.slice(1);
-        } else {
-            value = value && typeof value === 'string' ? value.charAt(0).toUpperCase() + value.slice(1) : value;
-        }
-
-        if (field === 'text') {
-            value = formatCardText(value);
-        }
-
-        let fieldHtml = `<p><strong>${field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>`;
-        if (field === 'text') {
-            fieldHtml += `<br>${value}</p>`;
-        } else {
-            fieldHtml += ` ${value}</p>`;
-        }
-        return fieldHtml;
-    }).join('');
-
-    const cardImage = new Image();
-    cardImage.src = imageUrl;
-    cardImage.alt = "Card Image";
-    cardImage.className = "card-image";
-
-    cardContainer.innerHTML = `
-        <div class="card-content">
-            <div class="card-image-container"></div>
-            <div class="card-details">
-                ${fields}
-            </div>
-        </div>`;
-    cardContainer.querySelector(".card-image-container").appendChild(cardImage);
-}
 
     // Function to format card text
-function formatCardText(text) {
-    const replacements = {
-        '\\[trash\\]': { file: 'trash.svg', width: '20px', height: '20px' },
-        '\\[mu\\]': { file: 'mu.svg', width: '20px', height: '20px' },
-        '\\[click\\]': { file: 'click.svg', width: '20px', height: '20px' },
-        '\\[credit\\]': { file: 'credit.svg', width: '20px', height: '20px' },
-        '\\[subroutine\\]': { file: 'subroutine.svg', width: '20px', height: '20px' },
-        '\\[recurring-credit\\]': { file: 'recurring-credit.svg', width: '20px', height: '20px' }
-    };
+    function formatCardText(text) {
+        const replacements = {
+            '\\[trash\\]': { file: 'trash.svg', width: '20px', height: '20px' },
+            '\\[mu\\]': { file: 'mu.svg', width: '20px', height: '20px' },
+            '\\[click\\]': { file: 'click.svg', width: '20px', height: '20px' },
+            '\\[credit\\]': { file: 'credit.svg', width: '20px', height: '20px' },
+            '\\[subroutine\\]': { file: 'subroutine.svg', width: '20px', height: '20px' },
+            '\\[recurring-credit\\]': { file: 'recurring-credit.svg', width: '20px', height: '20px' }
+        };
 
-    for (const [key, value] of Object.entries(replacements)) {
-        const iconClass = `icon-${key.slice(2, -2)}`;
-        const regex = new RegExp(key, 'g');
-        text = text.replace(regex, `<img src="svg/${value.file}" alt="${key.slice(2, -2)}" class="icon ${iconClass}" style="width: ${value.width}; height: ${value.height};">`);
+        for (const [key, value] of Object.entries(replacements)) {
+            const iconClass = `icon-${key.slice(2, -2)}`;
+            const regex = new RegExp(key, 'g');
+            text = text.replace(regex, `<img src="svg/${value.file}" alt="${key.slice(2, -2)}" class="icon ${iconClass}" style="width: ${value.width}; height: ${value.height};">`);
+        }
+
+        // Handle line breaks
+        text = text.replace(/\n/g, '<br>');
+
+        return text;
     }
-
-    // Handle line breaks
-    text = text.replace(/\n/g, '<br>');
-
-    return text;
-}
 });
