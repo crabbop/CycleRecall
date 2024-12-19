@@ -84,3 +84,24 @@ p {
     vertical-align: middle; /* Align to the middle */
     border: none;
 }
+
+#question-container {
+    width: 100%; /* Full width */
+    height: 600px; /* Set a height to make it visible */
+    border: 2px dashed #ccc; /* Add a dashed border for visibility */
+    margin-top: 20px; /* Space above the container */
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap */
+    justify-content: center; /* Center the cards horizontally */
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Space between cards */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+}
+
+.question-card {
+    width: 300px; /* Set the width of each question card */
+    height: 450px; /* Set the height of each question card */
+    border: 1px solid #ccc; /* Add a border for visibility */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide any overflow content */
+}
