@@ -68,6 +68,9 @@ p {
     overflow-y: auto; /* Add vertical scroll if content overflows */
     margin: 10px; /* Adjust the value as needed */
 }
+.card-details p {
+    margin-bottom: 5px; /* Adjust the value as needed */
+}
 
 .svg-container {
     display: flex;
