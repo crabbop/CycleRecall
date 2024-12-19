@@ -113,4 +113,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return text;
     }
+    
+        // New function to choose 3 random cards
+    function chooseThreeRandomCards(display_card, cards) {
+        // Get the type_code of the display_card
+        const typeCode = display_card.type_code;
+
+        // Filter cards with the same type_code and pack_code as 'rwr', 'tai', 'su21', 'sg'
+        const filteredCards = cards.filter(card => card.type_code === typeCode);
+
+        // Select 3 random cards from the filtered list
+        const randomCards = [];
+        while (randomCards.length < 3 && filteredCards.length > 0) {
+            const randomIndex = Math.floor(Math.random() * filteredCards.length);
+            randomCards.push(filteredCards.splice(randomIndex, 1)[0]);
+        }
+
+        // Print the titles of the 3 random cards into the question-container
+        if (questionContainer) {
+            questionContainer.innerHTML = randomCards.map(card => `<p>${card.title}</p>`).join('');
+        } else {
+            console.error("question-container element not found");
+        }
+    }
 });
