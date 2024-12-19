@@ -134,24 +134,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         console.log("Selected random cards:", randomCards);
 
-        // Print the titles of the 3 random cards into the question-container
-        if (questionContainer) {
-            questionContainer.innerHTML = `<p>${display_card.title}</p>` + randomCards.map(card => `<p>${card.title}</p>`).join('');
+        // Create a container for each title and its button
+        const createTitleButton = (title, index) => {
+            const container = document.createElement("div");
+            container.className = "title-button-container";
 
-            // Add buttons to the question-container
-            const buttonContainer = document.createElement("div");
-            buttonContainer.className = "button-container";
+            const titleElement = document.createElement("p");
+            titleElement.innerText = title;
 
-            randomCards.forEach((card, index) => {
-                const button = document.createElement("button");
-                button.innerText = `Card ${index + 1}`;
-                button.addEventListener("click", () => {
-                    alert(`You clicked: ${card.title}`);
-                });
-                buttonContainer.appendChild(button);
+            const button = document.createElement("button");
+            button.innerText = `Card ${index + 1}`;
+            button.addEventListener("click", () => {
+                alert(`You clicked: ${title}`);
             });
 
-            questionContainer.appendChild(buttonContainer);
+            container.appendChild(titleElement);
+            container.appendChild(button);
+
+            return container;
+        };
+
+        // Clear the question-container and add title-button pairs
+        if (questionContainer) {
+            questionContainer.innerHTML = ''; // Clear existing content
+            questionContainer.appendChild(createTitleButton(display_card.title, 0)); // Add display_card title and button
+
+            randomCards.forEach((card, index) => {
+                questionContainer.appendChild(createTitleButton(card.title, index + 1)); // Add random card titles and buttons
+            });
         } else {
             console.error("question-container element not found");
         }
