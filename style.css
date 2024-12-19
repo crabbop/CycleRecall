@@ -104,3 +104,18 @@ p {
     font-size: 1.2em;
     color: #333;
 }
+
+.title-button-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title-button-container p {
+    margin-right: 10px;
+    flex: 1;
+}
+
+.title-button-container button {
+    flex-shrink: 0;
+}
