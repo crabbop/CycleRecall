@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cardContainer = document.getElementById("card-container");
+    const questionContainer = document.getElementById("question-container");
 
     // Fetch the list of cards from NetrunnerDB API
     fetch("https://netrunnerdb.com/api/2.0/public/cards")
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const startupCards = cards.filter(card => startupPackCodes.includes(card.pack_code)); // Filter cards for the startup format
             const display_card = getRandomCard(startupCards); // Get a random card and store it as display_card
             displayCard(display_card);
+            chooseThreeRandomCards(display_card, startupCards); // Call the new function
         })
         .catch(error => {
             console.error("Error fetching cards:", error);
@@ -113,14 +115,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return text;
     }
-    
-        // New function to choose 3 random cards
+
+    // New function to choose 3 random cards
     function chooseThreeRandomCards(display_card, cards) {
         // Get the type_code of the display_card
         const typeCode = display_card.type_code;
+        console.log("Type code of display_card:", typeCode);
 
         // Filter cards with the same type_code and pack_code as 'rwr', 'tai', 'su21', 'sg'
         const filteredCards = cards.filter(card => card.type_code === typeCode);
+        console.log("Filtered cards:", filteredCards);
 
         // Select 3 random cards from the filtered list
         const randomCards = [];
@@ -128,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const randomIndex = Math.floor(Math.random() * filteredCards.length);
             randomCards.push(filteredCards.splice(randomIndex, 1)[0]);
         }
+        console.log("Selected random cards:", randomCards);
 
         // Print the titles of the 3 random cards into the question-container
         if (questionContainer) {
