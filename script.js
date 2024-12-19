@@ -91,9 +91,9 @@ function displayCard(card, container) {
     container.querySelector(".card-image-container").appendChild(cardImage);
 }
 
-// Function to get 3 random cards with the same ctype_code
-function getRandomCardsWithSameType(cards, ctype_code, excludeCode) {
-    const filteredCards = cards.filter(card => card.ctype_code === ctype_code && card.code !== excludeCode);
+// Function to get 3 random cards with the same type_code
+function getRandomCardsWithSameType(cards, type_code, excludeCode) {
+    const filteredCards = cards.filter(card => card.type_code === type_code && card.code !== excludeCode);
     const shuffledCards = filteredCards.sort(() => 0.5 - Math.random());
     return shuffledCards.slice(0, 3);
 }
@@ -111,8 +111,8 @@ function displayRandomCardWithQuestions(cards) {
     // Display the random card in the main card container
     displayCard(randomCard, document.getElementById('card-container'));
 
-    // Get 3 random cards with the same ctype_code
-    const questionCards = getRandomCardsWithSameType(cards, randomCard.ctype_code, randomCard.code);
+    // Get 3 random cards with the same type_code
+    const questionCards = getRandomCardsWithSameType(cards, randomCard.type_code, randomCard.code);
 
     // Display the chosen card and the 3 additional cards in the question container
     const questionContainer = document.getElementById('question-container');
