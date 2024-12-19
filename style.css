@@ -105,17 +105,18 @@ p {
     color: #333;
 }
 
-.title-button-container {
+.button-title-container {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.title-button-container p {
+.button-title-container button {
     margin-right: 10px;
-    flex: 1;
+    flex-shrink: 0;
 }
 
-.title-button-container button {
-    flex-shrink: 0;
+.button-title-container p {
+    margin: 0;
+    flex: 1;
 }
